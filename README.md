@@ -1,18 +1,18 @@
-# Solved in Unit Domain: JacobiNet for Differentiable Coordinate-Transformed PINNs 
+# Solved in Unit Domain: JacobiNet for Differentiable Coordinate-Transformed PINNs
 
 Accepted by *Journal of Computational Physics*. DOI, final publication link, and BibTeX citation will be updated after publication.
 
-## Abstract
-
-Physics-Informed Neural Networks (PINNs) offer a powerful framework for solving PDEs by embedding physical laws into the learning process. However, when applied to domains with irregular boundaries, PINNs often suffer from instability and slow convergence, which stems from inconsistent normalization due to geometric anisotropy, inaccurate boundary enforcement, and imbalanced loss-term competition. A common workaround is to map the domain to a regular space. Yet conventional mapping methods rely on case-specific meshes, define Jacobians at pre-specified fixed nodes, and reformulate PDEs via the chain rule, making them difficult to integrate with modern automatic-differentiation and tensor-based frameworks.
-
-JacobiNet is a learning-based coordinate-transformed PINN framework that unifies domain mapping and PDE solving within an end-to-end differentiable architecture. It enables direct Jacobian computation via autograd and shares the computation graph with downstream PINNs, thereby avoiding case-specific meshing, explicit Jacobian computation or storage, and manual PDE reformulation, while also supporting geometric-editing operations. By separating physical modeling from geometric complexity, JacobiNet addresses normalization challenges in anisotropic coordinates, facilitates hard enforcement of boundary conditions, and mitigates loss-term imbalance. Across the evaluated PDEs, JacobiNet reduces the L2,rel error from 0.11-0.73 to 0.01-0.09, achieving an average 15.6x improvement in accuracy. In vessel-like domains with varying shapes, JacobiNet enables millisecond-level mapping inference for unseen geometries, improves prediction accuracy by an average of 3.65x, and delivers over 10x speedup.
-
 ## Method Overview
+
+Physics-Informed Neural Networks (PINNs) can become unstable in irregular domains because geometric anisotropy affects normalization, boundary conditions are harder to enforce, and different loss terms compete during optimization. Conventional coordinate-transformed PINNs map the domain to a regular reference space, but typically rely on case-specific meshes, precomputed Jacobians, and manual chain-rule reformulation.
 
 ![Figure 1: Standard and coordinate-transformed PINN workflows in complex domains.](assets/figure1.png)
 
+JacobiNet learns a differentiable coordinate mapping and shares the computation graph with the downstream PINN solver. In the 2D U-shaped, S-shaped, and T-shaped benchmarks, this separates physical modeling from geometric complexity and enables PINN solving in a regularized domain.
+
 ![Figure 2: JacobiNet on 2D U-shaped, S-shaped, and T-shaped benchmark domains.](assets/figure2.png)
+
+The same differentiable coordinate-transform workflow is applied to 3D concentric and eccentric stenosed-vessel domains, where JacobiNet supports Navier-Stokes PINN prediction in vessel-like geometries.
 
 ![Figure 3: JacobiNet on 3D stenosed vessel benchmark domains.](assets/figure3.png)
 
@@ -89,7 +89,7 @@ python run_jacobinet.py --dry-run --cases U,S,T
 
 For VSCode F5 usage, edit `F5_CASES` at the top of `run_jacobinet.py`.
 
-## Data And Checkpoints
+## Data and Checkpoints
 
 The `groundtruth_*` directories contain the released reference datasets used by the controlled scripts. Evaluation metrics are computed from model predictions and these reference datasets at runtime; metrics are not hard-coded in the source.
 
