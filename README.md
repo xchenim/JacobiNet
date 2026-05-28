@@ -1,16 +1,24 @@
-# JacobiNet Reproducibility Code
+# Solved in Unit Domain: JacobiNet for Differentiable Coordinate-Transformed PINNs 
 
-This repository contains the open-source reproduction code for the accepted JacobiNet paper. The release keeps the controlled experiment paths for the active cases and removes exploratory data-generation scripts that are not part of the default reproduction workflow.
+Accepted by *Journal of Computational Physics*. DOI, final publication link, and BibTeX citation will be updated after publication.
 
-## Paper
+## Abstract
 
-**Solved in Unit Domain: JacobiNet for Differentiable Coordinate-Transformed PINNs**  
-Accepted by *Journal of Computational Physics*.
+Physics-Informed Neural Networks (PINNs) offer a powerful framework for solving PDEs by embedding physical laws into the learning process. However, when applied to domains with irregular boundaries, PINNs often suffer from instability and slow convergence, which stems from inconsistent normalization due to geometric anisotropy, inaccurate boundary enforcement, and imbalanced loss-term competition. A common workaround is to map the domain to a regular space. Yet conventional mapping methods rely on case-specific meshes, define Jacobians at pre-specified fixed nodes, and reformulate PDEs via the chain rule, making them difficult to integrate with modern automatic-differentiation and tensor-based frameworks.
 
-DOI, final publication link, and BibTeX citation will be updated after publication.
+JacobiNet is a learning-based coordinate-transformed PINN framework that unifies domain mapping and PDE solving within an end-to-end differentiable architecture. It enables direct Jacobian computation via autograd and shares the computation graph with downstream PINNs, thereby avoiding case-specific meshing, explicit Jacobian computation or storage, and manual PDE reformulation, while also supporting geometric-editing operations. By separating physical modeling from geometric complexity, JacobiNet addresses normalization challenges in anisotropic coordinates, facilitates hard enforcement of boundary conditions, and mitigates loss-term imbalance. Across the evaluated PDEs, JacobiNet reduces the L2,rel error from 0.11-0.73 to 0.01-0.09, achieving an average 15.6x improvement in accuracy. In vessel-like domains with varying shapes, JacobiNet enables millisecond-level mapping inference for unseen geometries, improves prediction accuracy by an average of 3.65x, and delivers over 10x speedup.
+
+## Method Overview
+
+![Figure 1: Standard and coordinate-transformed PINN workflows in complex domains.](assets/figure1.png)
+
+![Figure 2: JacobiNet on 2D U-shaped, S-shaped, and T-shaped benchmark domains.](assets/figure2.png)
+
+![Figure 3: JacobiNet on 3D stenosed vessel benchmark domains.](assets/figure3.png)
 
 ## Repository Layout
 
+- `assets/`: README figures prepared from the accepted manuscript.
 - `run_pinn.py`: root controller for batch PINN `train` and `eval` runs.
 - `run_jacobinet.py`: standalone JacobiNet coordinate-transform training entrypoint.
 - `configs.py`: shared configuration for PINN runs, JacobiNet geometry training, and layout checks.
@@ -36,7 +44,7 @@ The controlled cases are:
 - `STENOSIS_CO`
 - `STENOSIS_EC`
 
-`ALL` runs every active controlled case. The older 2D `STENOSIS` and `ANEURYSM` experiments are not included in this release.
+`ALL` runs every active controlled case.
 
 ## Setup
 
