@@ -1,7 +1,7 @@
 # Solved in Unit Domain: JacobiNet for Differentiable Coordinate-Transformed PINNs
 
 Published in *Journal of Computational Physics*, Volume 563, Article 115074 (2026).  
-https://doi.org/10.1016/j.jcp.2026.115074 | [arXiv](https://arxiv.org/abs/2508.02537)
+[Final paper](https://doi.org/10.1016/j.jcp.2026.115074) | [arXiv](https://arxiv.org/abs/2508.02537)
 
 ## Method Overview
 
