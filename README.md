@@ -14,8 +14,8 @@ which introduces the methodology.** The series includes:
    on 2D benchmark domains and 3D stenosed vessels.
    [Code (this repository)](https://github.com/xchenim/JacobiNet).
 2. **Blood-flow modeling:** *Physics-Informed Hemodynamic Modeling for Data-Free and Sparse-Data Assimilation*.
-   Applies JacobiNet to coronary blood-flow modeling, including data-free
-   prediction and sparse-data assimilation.
+   Extends the JacobiNet framework with methodological advances for coronary
+   blood-flow modeling, including data-free prediction and sparse-data assimilation.
    [Code](https://github.com/xchenim/JacobiNet_bloodflow) | [Synthetic dataset](https://huggingface.co/datasets/Xi-UST/JacobiNet_bloodflow/tree/main).
 
 Each repository provides the code and reproduction instructions for its
