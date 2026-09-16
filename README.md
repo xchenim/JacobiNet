@@ -3,6 +3,24 @@
 Published in *Journal of Computational Physics*, Volume 563, Article 115074 (2026).  
 [Final paper](https://doi.org/10.1016/j.jcp.2026.115074) | [arXiv](https://arxiv.org/abs/2508.02537)
 
+## JacobiNet Series
+
+JacobiNet is a series of studies on differentiable coordinate transformations for
+physics-informed neural networks. **This repository accompanies the first paper,
+which introduces the methodology.** The series includes:
+
+1. **Foundational methodology:** [Solved in Unit Domain: JacobiNet for Differentiable Coordinate-Transformed PINNs](https://doi.org/10.1016/j.jcp.2026.115074).
+   Introduces the differentiable coordinate-transform framework and evaluates it
+   on 2D benchmark domains and 3D stenosed vessels.
+   [Code (this repository)](https://github.com/xchenim/JacobiNet).
+2. **Blood-flow modeling:** *Physics-Informed Hemodynamic Modeling for Data-Free and Sparse-Data Assimilation*.
+   Applies JacobiNet to coronary blood-flow modeling, including data-free
+   prediction and sparse-data assimilation.
+   [Code](https://github.com/xchenim/JacobiNet_bloodflow) | [Synthetic dataset](https://huggingface.co/datasets/Xi-UST/JacobiNet_bloodflow/tree/main).
+
+Each repository provides the code and reproduction instructions for its
+corresponding study.
+
 ## Method Overview
 
 Physics-Informed Neural Networks (PINNs) can become unstable in irregular domains because geometric anisotropy affects normalization, boundary conditions are harder to enforce, and different loss terms compete during optimization. Conventional coordinate-transformed PINNs map the domain to a regular reference space, but typically rely on case-specific meshes, precomputed Jacobians, and manual chain-rule reformulation.
